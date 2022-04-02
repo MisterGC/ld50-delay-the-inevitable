@@ -1,0 +1,27 @@
+<RCC>
+    <qresource prefix="/qml">
+        <file>AssetProvider.qml</file>
+        <file>EndingScreen.qml</file>
+        <file>GameApp.qml</file>
+        <file>GameScene.qml</file>
+        <file>InfoScreen.qml</file>
+        <file>MenuScreen.qml</file>
+        <file>SharedState.qml</file>
+        <file>TitleScreen.qml</file>
+        <file>main.qml</file>
+        <file>details/AnimatedEntity.qml</file>
+        <file>details/Enemy.qml</file>
+        <file>details/Finish.qml</file>
+        <file>details/Floor.qml</file>
+        <file>details/GameButton.qml</file>
+        <file>details/GameSound.qml</file>
+        <file>details/HealthBar.qml</file>
+        <file>details/IconBar.qml</file>
+        <file>details/LivingEntity.qml</file>
+        <file>details/Player.qml</file>
+        <file>details/SpriteBoxBody.qml</file>
+        <file>details/StaticEntity.qml</file>
+        <file>details/Wall.qml</file>
+        <file>details/Sword.qml</file>
+    </qresource>
+</RCC>

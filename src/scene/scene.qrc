@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/scene">
+        <file>level.svg</file>
+    </qresource>
+</RCC>
