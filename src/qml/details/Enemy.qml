@@ -13,7 +13,6 @@ LivingEntity
     id: enemy
 
     active: visible
-    property alias attackable: _mouseArea.visible
     categories: collCat.enemy
     collidesWith: collCat.staticGeo | collCat.player | collCat.detector
     bodyType: Body.Dynamic; sensor: true;
@@ -26,15 +25,16 @@ LivingEntity
                                   x: enemy.x,
                                   y: enemy.y,
                                   width: enemy.width,
-                                  height: enemy.height }
+                                  height: enemy.height
+                                  }
                               );
 
             if (!toAbsorb){
                 _corpseComp.createObject(enemy.parent, {
-                                             x: enemy.x,
-                                             y: enemy.y,
-                                             width: enemy.width,
-                                             height: enemy.height }
+                                             x: enemy.x - enemy.width * .5,
+                                             y: enemy.y - enemy.height * .5,
+                                             width: enemy.width * 2,
+                                             height: enemy.height * 2}
                                          );
             }
             enemy.visible = false;
@@ -57,24 +57,10 @@ LivingEntity
     ]
 
     MoveTo {
-        desiredSpeed: 15
+        desiredSpeed: 5 + Math.random() * 15
         world: gameScene; anchors.centerIn: parent;
         function updateDest() {destXWu = rndSpawnAreaX(demonTag); destYWu = rndSpawnAreaY(demonTag)}
         Component.onCompleted: updateDest(); running: true;
-        //onArrived: updateDest()
-        //debug: true; debugColor: "red"
-    }
-
-    signal picked(var entity)
-    MouseArea{
-        id: _mouseArea
-        visible: false
-        anchors.centerIn: parent
-        width: parent.width * 4
-        height: parent.height * 4
-        onClicked: {picked(enemy);}
-        Rectangle{z: -10; color: "blue"; opacity: .2; anchors.fill: parent}
-
     }
 
     Component{
@@ -89,6 +75,7 @@ LivingEntity
                 anchors.centerIn: parent
                 enabled: false
                 lifeSpan: 200
+                endSize: 2
                 velocity: AngleDirection{
                     magnitude: 10 * _deathAnim.width;
                     magnitudeVariation: magnitude * .1
@@ -97,7 +84,7 @@ LivingEntity
 
             ItemParticle {
                 delegate: Rectangle { width: _deathAnim.width * .5; height: width
-                    color: "green"; opacity: 0.5; rotation: Math.random() * 360 }
+                    color: "#2fcf00"; opacity: 0.5; rotation: Math.random() * 360 }
             }
 
         }
@@ -108,16 +95,16 @@ LivingEntity
         ParticleSystem {
             id: _absorbAnim
             Component.onCompleted: emitter.burst(100)
-            Timer{interval: emitter.lifeSpan; running: true; onTriggered: enemy.destroy()}
+            Timer{interval: emitter.lifeSpan; running: true; onTriggered: {enemy.destroy(); _absorbAnim.destroy()}}
             Emitter
             {
                 id: emitter
-                width: _absorbAnim.width
+                width: _absorbAnim.width * 3
                 height: width
                 anchors.centerIn: parent
                 emitRate: 100
-                enabled: false
                 lifeSpan: 500
+                enabled: false
                 velocity: TargetDirection {
                     targetX: emitter.width * .5
                     targetY: emitter.height * .5
@@ -127,7 +114,7 @@ LivingEntity
             }
             ItemParticle {
                 delegate: Rectangle {
-                    width: _absorbAnim.width * .2
+                    width: _absorbAnim.width * .1
                     height: width
                     color: "orange"
                 }
@@ -144,7 +131,7 @@ LivingEntity
             onVisibleChanged: if (!visible) destroy();
             Repeater{
                 model: 3
-                Rectangle{color: "green"; opacity: Math.random() * 0.2 + 0.2
+                Rectangle{color: "#2fcf00"; opacity: Math.random() * 0.2 + 0.2
                     x: Math.random() * (parent.width - width)
                     y: Math.random() * (parent.height - height)
                     width: .3 * parent.width + Math.random() * .5 * parent.width

@@ -24,6 +24,6 @@
         <file>details/Wall.qml</file>
         <file>details/Sword.qml</file>
         <file>details/MagmaDemonTag.qml</file>
-        <file>details/GameText.qml</file>
+        <file>details/StoryText.qml</file>
     </qresource>
 </RCC>

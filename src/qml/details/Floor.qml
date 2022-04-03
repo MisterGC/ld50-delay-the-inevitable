@@ -16,7 +16,7 @@ StaticEntity
     SequentialAnimation{
         running: true
         loops: Animation.Infinite
-        NumberAnimation {target: _tile; property: "opacity"; duration: 2000; from: .3; to: .1  }
-        NumberAnimation {target: _tile; property: "opacity"; duration: 2000; from: .1; to: .3  }
+        NumberAnimation {target: _tile; property: "opacity"; duration: 1500; from: .25; to: .1  }
+        NumberAnimation {target: _tile; property: "opacity"; duration: 1500; from: .1; to: .25  }
     }
 }

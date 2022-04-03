@@ -18,7 +18,7 @@ LivingEntity
     }
     function _onCollision(entity) { if (entity instanceof Enemy) health--;}
 
-    maxHealth: 8
+    maxHealth: 5
     spriteWidthWu: spriteHeightWu
 
     categories: collCat.player
@@ -33,11 +33,47 @@ LivingEntity
         }
     ]
 
-    readonly property real veloCompMax: 25
+    property real _veloCompMax: 25
     property real xDirDesire: theGameCtrl.axisX
-    linearVelocity.x: xDirDesire * veloCompMax
+    linearVelocity.x: xDirDesire * _veloCompMax
     property real yDirDesire: theGameCtrl.axisY
-    linearVelocity.y: yDirDesire * veloCompMax
+    linearVelocity.y: yDirDesire * _veloCompMax
+
+    Connections{
+        target: theGameCtrl
+        function onAttack(point){
+            let ents = perception.entities;
+            let minDist = 10000;
+            let hit = null;
+            for (let e of ents){
+                if (e instanceof Enemy && e.health > 0) {
+                   let d = Qt.vector2d(player.x - e.x,
+                                       player.y - e.y).length();
+                    if(d < minDist){
+                        minDist = d;
+                        hit = e;
+                    }
+                }
+            }
+            if (hit) { sword.attack(hit) }
+        }
+        function onRushTo(point){
+            let p = Qt.vector2d(point.x - x,point.y - y);
+            p = p.normalized().times(width * 1.5);
+            body.applyLinearImpulse(Qt.point(p.x, p.y), Qt.point(x, y));
+            _veloCompMax = 50;
+            _impulseStopper.start();
+        }
+    }
+
+    Timer {
+        id: _impulseStopper
+        property var counterImpulse: null
+        interval: 500
+        onTriggered: {
+            _veloCompMax = 25;
+        }
+    }
 
     Component {
         id: areaOfDamage
@@ -52,12 +88,11 @@ LivingEntity
         }
     }
 
-
     CollisionTracker {
         id: perception
 
-        //debug: true
-        width: 3 * player.width
+        debug: true
+        width: 7 * player.width
         height: width
         anchors.centerIn: parent
         Component.onCompleted: {
@@ -73,18 +108,6 @@ LivingEntity
                 categories: collCat.detector; collidesWith: collCat.enemy
             }
         }
-        onBeginContact: (entity) => {
-                            if (entity instanceof Enemy) {
-                                entity.attackable = true;
-                                entity.picked.connect(sword.attack)
-                            }
-                        }
-        onEndContact: (entity) => {
-                          if (entity instanceof Enemy){
-                              entity.attackable = false;
-                              entity.picked.disconnect(sword.attack);
-                          }
-                      }
     }
 
 

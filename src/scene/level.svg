@@ -23,9 +23,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.4"
-     inkscape:cx="-266.07143"
-     inkscape:cy="83.571429"
+     inkscape:zoom="1.979899"
+     inkscape:cx="510.37957"
+     inkscape:cy="202.53559"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -83,13 +83,13 @@
 </desc>
     </rect>
     <rect
-       style="fill:#730000;fill-opacity:0.693848;stroke:none;stroke-width:1.074;stop-color:#000000"
+       style="fill:#730000;fill-opacity:0.693848;stroke:none;stroke-width:1.07399;stop-color:#000000"
        id="rect71668"
-       width="17.150707"
-       height="16.700451"
-       x="47.608665"
-       y="46.494652"
-       rx="0.0041092709"
+       width="31.095041"
+       height="30.278706"
+       x="39.978355"
+       y="37.535938"
+       rx="0.0074503021"
        ry="0">
       <desc
          id="desc71932">{&quot;component&quot;:&quot;MagmaDemonTag&quot;,
@@ -111,9 +111,9 @@
          id="desc5920">{&quot;component&quot;:&quot;Player&quot;}</desc>
     </rect>
     <rect
-       y="0.095853321"
+       y="3.6449142"
        x="0.095853634"
-       height="110"
+       height="102.83302"
        width="3.5930002"
        id="rect2172-5"
        style="opacity:1;fill:#504a49;fill-opacity:1;stroke:none;stroke-width:0.722122;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1">
@@ -122,18 +122,18 @@
     </rect>
     <rect
        y="-2.7755576e-17"
-       x="0"
+       x="0.10333268"
        height="3.6629648"
-       width="110"
+       width="110.23003"
        id="rect2172-2"
        style="opacity:1;fill:#504a49;fill-opacity:1;stroke:none;stroke-width:0.415523;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1">
       <desc
          id="desc5900-9">{&quot;component&quot;:&quot;Wall&quot;}</desc>
     </rect>
     <rect
-       y="0.095853321"
+       y="3.6440806"
        x="106.74018"
-       height="110"
+       height="102.87347"
        width="3.5930002"
        id="rect2172-5-1"
        style="opacity:1;fill:#504a49;fill-opacity:1;stroke:none;stroke-width:0.720515;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1">
@@ -143,9 +143,9 @@
     <rect
        style="opacity:1;fill:#504a49;fill-opacity:1;stroke:none;stroke-width:0.467116;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
        id="rect6175"
-       width="110"
+       width="110.23679"
        height="3.6804476"
-       x="0.35473287"
+       x="0.11794985"
        y="106.48814">
       <desc
          id="desc6173">{&quot;component&quot;:&quot;Wall&quot;}</desc>
