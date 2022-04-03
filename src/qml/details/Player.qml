@@ -56,7 +56,7 @@ LivingEntity
     CollisionTracker {
         id: perception
 
-        debug: true
+        //debug: true
         width: 3 * player.width
         height: width
         anchors.centerIn: parent

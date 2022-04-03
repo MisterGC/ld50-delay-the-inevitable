@@ -20,7 +20,7 @@ Rectangle
     StackView {
         id: stack
         anchors.fill: parent
-        initialItem: titleScreenComp
+        initialItem: gameSceneComp
     }
 
     Component {id: titleScreenComp; TitleScreen {}}
