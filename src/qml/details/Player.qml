@@ -18,6 +18,12 @@ LivingEntity
     }
     function _onCollision(entity) { if (entity instanceof Enemy) health--;}
 
+    GameSound{
+       id: ouch
+       sound: "ouch.wav"
+    }
+    onHealthChanged: if (health < maxHealth) ouch.play();
+
     maxHealth: 5
     spriteWidthWu: spriteHeightWu
 
